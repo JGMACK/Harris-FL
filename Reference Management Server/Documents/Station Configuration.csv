@@ -1,0 +1,29 @@
+Comment,National Instruments Proprietary,,,,,,,,,,,,
+Comment,U.S. Export Controlled Information,,,,,,,,,,,,
+,,,,,,,,,,,,,
+Comment,File Name,,,,,,,,,,,,
+Line 1,Station Configuration,,,,,,,,,,,,
+Comment,File Type,,,,,,,,,,,,
+Line 2,Instrument Configuration,,,,,,,,,,,,
+,,,,,,,,,,,,,
+Comment,Rack,Model,Serial,,,,,,,,,,
+Comment,ID,Number,Number,,,,,,,,,,
+Line 3a,A,RT-100,1,,,,,,,,,,
+Line 3b,B,,,,,,,,,,,,
+,,,,,,,,,,,,,
+Line 4,Reserved,,,,,,,,,,,,
+Line 5,Reserved,,,,,,,,,,,,
+Line 6,Reserved,,,,,,,,,,,,
+Line 7,Reserved,,,,,,,,,,,,
+Line 8,Reserved,,,,,,,,,,,,
+Line 9,Reserved,,,,,,,,,,,,
+Line 10,Reserved,,,,,,,,,,,,
+,,,,,,,,,,,,,
+Comment,Rack,Instrument,Component,Subsystem,Instrument,IP,Sub,Model,Firmware,Expected,Required,Excluded,Inst #
+Comment,ID,Mnemonic,Mnemonic,Mnemonic,Availability,Address,Address,Number,Revision,Options,Options,Options,By Type
+Line 11,A,DMM,-,BASE,Yes,-,DMM-4071_1,PXIe-4071,-,-,-,-,0
+Line 12,A,DMM,-,BASE,Yes,-,DMM-4071_2,PXIe-4071,-,-,-,-,1
+Line 13,A,POW_SUP,-,BASE,Yes,-,SMU-4130,PXIe-4130,-,-,-,-,0
+,,,,,,,,,,,,,
+Comment,National Instruments Proprietary,,,,,,,,,,,,
+Comment,U.S. Export Controlled Information,,,,,,,,,,,,
