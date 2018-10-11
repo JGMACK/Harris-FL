@@ -1,0 +1,21 @@
+	10/10/2018 8:26:40 AM	Invoke Node in Logger Set Server Run Mode.vi->Logger Initialize.vi->Station.lvclass:Station Initialize Guts.vi->Station.lvclass:Station Initialize.vi
+<APPEND>
+Method Name: <b>Run VI</b>
+
+VI Path: <b>C:\Users\John Gmitter\OneDrive - National Instruments\Git Repo\Harris-FL\Reference Management Server\Generic Reuse\Logger\Logger Server.vi</b>
+	10/11/2018 11:32:04 AM	Invoke Node in Logger Set Server Run Mode.vi->Logger Initialize.vi->Station.lvclass:Station Initialize Guts.vi->Station.lvclass:Station Initialize.vi
+<APPEND>
+Method Name: <b>Run VI</b>
+
+VI Path: <b>C:\Users\John Gmitter\OneDrive - National Instruments\Git Repo\Harris-FL\Reference Management Server\Generic Reuse\Logger\Logger Server.vi</b>
+	10/11/2018 11:32:07 AM	Invoke Node in Logger Set Server Run Mode.vi->Logger Initialize.vi->Station.lvclass:Station Initialize Guts.vi->Station.lvclass:Station Initialize.vi
+<APPEND>
+Method Name: <b>Run VI</b>
+
+VI Path: <b>C:\Users\John Gmitter\OneDrive - National Instruments\Git Repo\Harris-FL\Reference Management Server\Generic Reuse\Logger\Logger Server.vi</b>
+	10/11/2018 11:32:16 AM	Invoke Node in Station.lvclass:Station Class Server Utility.vi->Station.lvclass:Station Close.vi
+<APPEND>
+Method Name: <b>Front Panel:Close</b>
+	10/11/2018 11:37:08 AM	Invoke Node in Station.lvclass:Station Class Server Utility.vi->Station.lvclass:Station Close.vi
+<APPEND>
+Method Name: <b>Front Panel:Close</b>
