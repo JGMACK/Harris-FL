@@ -1,0 +1,742 @@
+explicitActiveChannels: TRUE
+library: nidcpower_*.*
+      
+class: "niDCPower"
+flags: 0
+sorted: no
+implements: ivi, iviResourceMgr, iviDcPwr
+
+attribute: "Active Channel"
+   "Active Channel"
+   string	writeonly	19	-2
+   "Specifies the channel name used to access all subsequent channel-based properties in this property node."	"pniDCPower_ActiveChannel.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Source Mode"
+   "Source:Source Mode"
+   iL enum { "Single Point"=1020, "Sequence"=1021 }	readwrite	17	00118C66
+   "Specifies whether to run a single output point or a sequence. Refer to the Single Point source mode and Sequence source mode topics in the NI DC Power Supplies and SMUs Help for more information about source modes."	"pniDCPower_SourceMode.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Output Function"
+   "Source:Output Function"
+   iL enum { "DC Voltage"=1006, "DC Current"=1007, "Pulse Voltage"=1049, "Pulse Current"=1050 }	readwrite	17	00118C38
+   "Configures the function to generate on the specified channel(s)."	"pniDCPower_OutputFunction.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Output Enabled"
+   "Source:Output Enabled"
+   bool	readwrite	17	001312D6
+   "Specifies whether the output is enabled (TRUE) or disabled (FALSE)."	"pniDCPower_OutputEnabled.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Output Connected"
+   "Source:Output Connected"
+   bool	readwrite	17	00118C6C
+   "Specifies whether the output relay is connected (closed) or disconnected (open). The Output Enabled property does not change based on this property; they are independent of each other."	"pniDCPower_OutputConnected.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Output Resistance"
+   "Source:Output Resistance"
+   fD	readwrite	17	00118C6D
+   "Specifies the output resistance that the device attempts to generate for the specified channel(s). This property is available only when you set the Output Function property to <b>DC Voltage</b>. Refer to NI PXIe-4154 Programmable Output Resistance for more information about selecting an output resistance."	"pniDCPower_OutputResistance.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Transient Response"
+   "Source:Transient Response"
+   iL enum { "Slow"=1041, "Normal"=1038, "Fast"=1039, "Custom"=1042 }	readwrite	17	00118C6E
+   "Specifies the transient response. Refer to the Transient Response topic in the NI DC Power Supplies and SMUs Help for more information about transient response."	"pniDCPower_TransientResponse.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Voltage GBW"
+   "Source:Custom Transient Response:Voltage:Gain Bandwidth"
+   fD	readwrite	17	00118C73
+   "The frequency at which the unloaded loop gain extrapolates to 0 dB in the absence of additional poles and zeroes. This property takes effect when the channel is in Constant Voltage mode."	"pniDCPower_VoltageGainBandwidth.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Voltage Compensation Freq"
+   "Source:Custom Transient Response:Voltage:Compensation Frequency"
+   fD	readwrite	17	00118C74
+   "The frequency at which a pole-zero pair is added to the system when the channel is in Constant Voltage mode."	"pniDCPower_VoltageCompensationFrequency.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Voltage Pole-Zero Ratio"
+   "Source:Custom Transient Response:Voltage:Pole-Zero Ratio"
+   fD	readwrite	17	00118C75
+   "The ratio of the pole frequency to the zero frequency when the channel is in Constant Voltage mode."	"pniDCPower_VoltagePoleZeroRatio.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Current GBW"
+   "Source:Custom Transient Response:Current:Gain Bandwidth"
+   fD	readwrite	17	00118C76
+   "The frequency at which the unloaded loop gain extrapolates to 0 dB in the absence of additional poles and zeroes. This property takes effect when the channel is in Constant Current mode."	"pniDCPower_CurrentGainBandwidth.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Current Compensation Freq"
+   "Source:Custom Transient Response:Current:Compensation Frequency"
+   fD	readwrite	17	00118C77
+   "The frequency at which a pole-zero pair is added to the system when the channel is in Constant Current mode."	"pniDCPower_CurrentCompensationFrequency.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Current Pole-Zero Ratio"
+   "Source:Custom Transient Response:Current:Pole-Zero Ratio"
+   fD	readwrite	17	00118C78
+   "The ratio of the pole frequency to the zero frequency when the channel is in Constant Current mode."	"pniDCPower_CurrentPoleZeroRatio.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Voltage Level"
+   "Source:DC Voltage:Voltage Level"
+   fD	readwrite	17	001312D1
+   "Specifies the voltage level, in volts, that the device attempts to generate on the specified channel(s)."	"pniDCPower_VoltageLevel.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Voltage Level Range"
+   "Source:DC Voltage:Voltage Level Range"
+   fD	readwrite	17	00118C35
+   "Specifies the voltage level range, in volts, for the specified channel(s)."	"pniDCPower_VoltageLevelRange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Voltage Level Autorange"
+   "Source:DC Voltage:Voltage Level Autorange"
+   iL enum { "Off"=0, "On"=1 }	readwrite	17	00118C3F
+   "Specifies whether NI-DCPower automatically selects the voltage level range based on the desired voltage level for the specified channel(s)."	"pniDCPower_VoltageLevelAutorange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Current Limit"
+   "Source:DC Voltage:Current Limit"
+   fD	readwrite	17	001312D5
+   "Specifies the current limit, in amps, that the output cannot exceed when generating the desired voltage on the specified channel(s). Limit is specified as a positive value, but symmetric positive and negative limits are enforced simultaneously."	"pniDCPower_CurrentLimit.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Current Limit High"
+   "Source:DC Voltage:Current Limit High"
+   fD	readwrite	17	00118CEB
+   "Specifies the maximum current, in amps, that the output can produce when generating the desired voltage on the specified channel(s)."	"pniDCPower_CurrentLimitHigh.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Current Limit Low"
+   "Source:DC Voltage:Current Limit Low"
+   fD	readwrite	17	00118CEC
+   "Specifies the minimum current, in amps, that the output can produce when generating the desired voltage on the specified channel(s)."	"pniDCPower_CurrentLimitLow.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Current Limit Range"
+   "Source:DC Voltage:Current Limit Range"
+   fD	readwrite	17	00118C34
+   "Specifies the current limit range, in amps, for the specified channel(s)."	"pniDCPower_CurrentLimitRange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Current Limit Autorange"
+   "Source:DC Voltage:Current Limit Autorange"
+   iL enum { "Off"=0, "On"=1 }	readwrite	17	00118C40
+   "Specifies whether NI-DCPower automatically selects the current limit range based on the desired current limit for the specified channel(s)."	"pniDCPower_CurrentLimitAutorange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Current Level"
+   "Source:DC Current:Current Level"
+   fD	readwrite	17	00118C39
+   "Specifies the current level, in amps, that the device attempts to generate on the specified channel(s)."	"pniDCPower_CurrentLevel.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Current Level Range"
+   "Source:DC Current:Current Level Range"
+   fD	readwrite	17	00118C3B
+   "Specifies the current level range, in amps, for the specified channel(s)."	"pniDCPower_CurrentLevelRange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Current Level Autorange"
+   "Source:DC Current:Current Level Autorange"
+   iL enum { "Off"=0, "On"=1 }	readwrite	17	00118C41
+   "Specifies whether NI-DCPower automatically selects the current level range based on the desired current level for the specified channel(s)."	"pniDCPower_CurrentLevelAutorange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Voltage Limit"
+   "Source:DC Current:Voltage Limit"
+   fD	readwrite	17	00118C3A
+   "Specifies the voltage limit, in volts, that the output cannot exceed when generating the desired current level on the specified channels. Limit is specified as a positive value, but symmetric positive and negative limits are enforced simultaneously."	"pniDCPower_VoltageLimit.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Voltage Limit High"
+   "Source:DC Current:Voltage Limit High"
+   fD	readwrite	17	00118CE9
+   "Specifies the maximum voltage, in volts, that the output can produce when generating the desired current on the specified channel(s)."	"pniDCPower_VoltageLimitHigh.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Voltage Limit Low"
+   "Source:DC Current:Voltage Limit Low"
+   fD	readwrite	17	00118CEA
+   "Specifies the minimum voltage, in volts, that the output can produce when generating the desired current on the specified channel(s)."	"pniDCPower_VoltageLimitLow.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Voltage Limit Range"
+   "Source:DC Current:Voltage Limit Range"
+   fD	readwrite	17	00118C3C
+   "Specifies the voltage limit range, in volts, for the specified channel(s)."	"pniDCPower_VoltageLimitRange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Voltage Limit Autorange"
+   "Source:DC Current:Voltage Limit Autorange"
+   iL enum { "Off"=0, "On"=1 }	readwrite	17	00118C42
+   "Specifies whether NI-DCPower automatically selects the voltage limit range based on the desired voltage limit for the specified channel(s)."	"pniDCPower_VoltageLimitAutorange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Voltage Level"
+   "Source:Pulse Voltage:Pulse Voltage Level"
+   fD	readwrite	17	00118C80
+   "Specifies the pulse voltage level, in volts, that the device attempts to generate on the specified channel(s) during the on phase of a pulse."	"pniDCPower_PulseVoltageLevel.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Bias Voltage Level"
+   "Source:Pulse Voltage:Pulse Bias Voltage Level"
+   fD	readwrite	17	00118C82
+   "Specifies the pulse bias voltage level, in volts, that the device attempts to generate on the specified channel(s) during the off phase of a pulse."	"pniDCPower_PulseBiasVoltageLevel.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Voltage Level Range"
+   "Source:Pulse Voltage:Pulse Voltage Level Range"
+   fD	readwrite	17	00118C84
+   "Specifies the pulse voltage level range, in volts, for the specified channel(s)."	"pniDCPower_PulseVoltageLevelRange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Current Limit"
+   "Source:Pulse Voltage:Pulse Current Limit"
+   fD	readwrite	17	00118C81
+   "Specifies the pulse current limit, in amps, that the output cannot exceed when generating the desired pulse voltage on the specified channel(s) during the on phase of a pulse. Limit is specified as a positive value, but symmetric positive and negative limits are enforced simultaneously."	"pniDCPower_PulseCurrentLimit.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Current Limit High"
+   "Source:Pulse Voltage:Pulse Current Limit High"
+   fD	readwrite	17	00118CF1
+   "Specifies the maximum current, in amps, that the output can produce when generating the desired pulse voltage on the specified channel(s) during the on phase of a pulse."	"pniDCPower_PulseCurrentLimitHigh.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Current Limit Low"
+   "Source:Pulse Voltage:Pulse Current Limit Low"
+   fD	readwrite	17	00118CF2
+   "Specifies the minimum current, in amps, that the output can produce when generating the desired pulse voltage on the specified channel(s) during the on phase of a pulse."	"pniDCPower_PulseCurrentLimitLow.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Bias Current Limit"
+   "Source:Pulse Voltage:Pulse Bias Current Limit"
+   fD	readwrite	17	00118C83
+   "Specifies the pulse bias current limit, in amps, that the output cannot exceed when generating the desired pulse bias voltage on the specified channel(s) during the off phase of a pulse. Limit is specified as a positive value, but symmetric positive and negative limits are enforced simultaneously."	"pniDCPower_PulseBiasCurrentLimit.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Bias Current Limit High"
+   "Source:Pulse Voltage:Pulse Bias Current Limit High"
+   fD	readwrite	17	00118CF3
+   "Specifies the maximum current, in amps, that the output can produce when generating the desired pulse voltage on the specified channel(s) during the off phase of a pulse."	"pniDCPower_PulseBiasCurrentLimitHigh.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Bias Current Limit Low"
+   "Source:Pulse Voltage:Pulse Bias Current Limit Low"
+   fD	readwrite	17	00118CF4
+   "Specifies the minimum current, in amps, that the output can produce when generating the desired pulse voltage on the specified channel(s) during the off phase of a pulse."	"pniDCPower_PulseBiasCurrentLimitLow.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Current Limit Range"
+   "Source:Pulse Voltage:Pulse Current Limit Range"
+   fD	readwrite	17	00118C85
+   "Specifies the pulse current limit range, in amps, for the specified channel(s)."	"pniDCPower_PulseCurrentLimitRange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Current Level"
+   "Source:Pulse Current:Pulse Current Level"
+   fD	readwrite	17	00118C86
+   "Specifies the pulse current level, in amps, that the device attempts to generate on the specified channel(s) during the on phase of a pulse."	"pniDCPower_PulseCurrentLevel.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Bias Current Level"
+   "Source:Pulse Current:Pulse Bias Current Level"
+   fD	readwrite	17	00118C88
+   "Specifies the pulse bias current level, in amps, that the device attempts to generate on the specified channel(s) during the off phase of a pulse."	"pniDCPower_PulseBiasCurrentLevel.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Current Level Range"
+   "Source:Pulse Current:Pulse Current Level Range"
+   fD	readwrite	17	00118C8A
+   "Specifies the pulse current level range, in amps, for the specified channel(s)."	"pniDCPower_PulseCurrentLevelRange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Voltage Limit"
+   "Source:Pulse Current:Pulse Voltage Limit"
+   fD	readwrite	17	00118C87
+   "Specifies the pulse voltage limit, in volts, that the output cannot exceed when generating the desired pulse current on the specified channel(s) during the on phase of a pulse. Limit is specified as a positive value, but symmetric positive and negative limits are enforced simultaneously."	"pniDCPower_PulseVoltageLimit.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Voltage Limit High"
+   "Source:Pulse Current:Pulse Voltage Limit High"
+   fD	readwrite	17	00118CED
+   "Specifies the maximum voltage, in volts, that the output can produce when generating the desired pulse current on the specified channel(s) during the on phase of a pulse."	"pniDCPower_PulseVoltageLimitHigh.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Voltage Limit Low"
+   "Source:Pulse Current:Pulse Voltage Limit Low"
+   fD	readwrite	17	00118CEE
+   "Specifies the minimum voltage, in volts, that the output can produce when generating the desired pulse current on the specified channel(s) during the on phase of a pulse."	"pniDCPower_PulseVoltageLimitLow.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Bias Voltage Limit"
+   "Source:Pulse Current:Pulse Bias Voltage Limit"
+   fD	readwrite	17	00118C89
+   "Specifies the pulse voltage limit, in volts, that the output cannot exceed when generating the desired current on the specified channel(s) during the off phase of a pulse. Limit is specified as a positive value, but symmetric positive and negative limits are enforced simultaneously."	"pniDCPower_PulseBiasVoltageLimit.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Bias Voltage Limit High"
+   "Source:Pulse Current:Pulse Bias Voltage Limit High"
+   fD	readwrite	17	00118CEF
+   "Specifies the maximum voltage, in volts, that the output can produce when generating the desired pulse current on the specified channel(s) during the off phase of a pulse."	"pniDCPower_PulseBiasVoltageLimitHigh.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Bias Voltage Limit Low"
+   "Source:Pulse Current:Pulse Bias Voltage Limit Low"
+   fD	readwrite	17	00118CF0
+   "Specifies the minimum voltage, in volts, that the output can produce when generating the desired pulse current on the specified channel(s) during the off phase of a pulse."	"pniDCPower_PulseBiasVoltageLimitLow.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Voltage Limit Range"
+   "Source:Pulse Current:Pulse Voltage Limit Range"
+   fD	readwrite	17	00118C8B
+   "Specifies the pulse voltage limit range, in volts, for the specified channel(s)."	"pniDCPower_PulseVoltageLimitRange.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Source Delay"
+   "Source:Advanced:Source Delay"
+   fD	readwrite	17	00118C63
+   "Determines when, in seconds, the device generates the Source Complete event, potentially starting a measurement if the Measure When property is set to <b>Automatically After Source Complete</b>."	"pniDCPower_SourceDelay.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Bias Delay"
+   "Source:Advanced:Pulse Bias Delay"
+   fD	readwrite	17	00118C8C
+   "Determines when, in seconds, the device generates the Pulse Complete event after generating the off level of a pulse."	"pniDCPower_PulseBiasDelay.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse On Time"
+   "Source:Advanced:Pulse On Time"
+   fD	readwrite	17	00118C8D
+   "Determines the length, in seconds, of the on phase of a pulse."	"pniDCPower_PulseOnTime.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Off Time"
+   "Source:Advanced:Pulse Off Time"
+   fD	readwrite	17	00118C8E
+   "Determines the length, in seconds, of the off phase of a pulse."	"pniDCPower_PulseOffTime.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "OVP Enabled"
+   "Source:Advanced:OVP Enabled"
+   bool	readwrite	17	001312D2
+   "Enables (TRUE) or disables (FALSE) overvoltage protection (OVP)."	"pniDCPower_OVPEnabled.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "OVP Limit"
+   "Source:Advanced:OVP Limit"
+   fD	readwrite	17	001312D3
+   "Determines the voltage limit, in volts, beyond which overvoltage protection (OVP) engages. Limit is specified as a positive value, but symmetric positive and negative limits are enforced simultaneously. For example, setting the OVP Limit to 65 will configure the OVP feature to trigger an OVP error if the output exceeds +/-65 V."	"pniDCPower_OVPLimit.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Overranging Enabled"
+   "Source:Advanced:Overranging Enabled"
+   bool	readwrite	17	00118C37
+   "Specifies whether NI-DCPower allows setting the voltage level, current level, voltage limit, and current limit outside the device specification limits. TRUE means that overranging is enabled."	"pniDCPower_OverrangingEnabled.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Output Capacitance"
+   "Source:Advanced:Output Capacitance"
+   iL enum { "Low"=1010, "High"=1011 }	readwrite	17	00118C3E
+   "Specifies whether to use a low or high capacitance on the output for the specified channel(s)."	"pniDCPower_OutputCapacitance.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sequence Loop Count"
+   "Source:Advanced:Sequence Loop Count"
+   iL	readwrite	17	00118C49
+   "Specifies the number of times a sequence is run after initiation."	"pniDCPower_SequenceLoopCount.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sequence Loop Count Is Finite"
+   "Source:Advanced:Sequence Loop Count Is Finite"
+   bool	readwrite	17	00118C7E
+   "Specifies whether a sequence should repeat indefinitely."	"pniDCPower_SequenceLoopCountIsFinite.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Active Advanced Sequence"
+   "Source:Advanced:Active Advanced Sequence"
+   string	readwrite	17	00118C7A
+   "Specifies the advanced sequence to configure or generate."	"pniDCPower_ActiveAdvancedSequence.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Active Advanced Sequence Step"
+   "Source:Advanced:Active Advanced Sequence Step"
+   iQ	readwrite	17	00118C7B
+   "Specifies the advanced sequence step to configure."	"pniDCPower_ActiveAdvancedSequenceStep.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Compliance Limit Symmetry"
+   "Source:Advanced:Compliance Limit Symmetry"
+   iL enum { "Symmetric"=0, "Asymmetric"=1 }	readwrite	17	00118CE8
+   "Specifies whether compliance limits for current generation and voltage generation for the device are applied symmetrically about 0 V and 0 A or asymmetrically with respect to 0 V and 0 A."	"pniDCPower_ComplianceLimitSymmetry.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sense"
+   "Measurement:Sense"
+   iL enum { "Local"=1008, "Remote"=1009 }	readwrite	17	00118C3D
+   "Selects either local or remote sensing of the output voltage for the specified channel(s)."	"pniDCPower_Sense.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Auto Zero"
+   "Measurement:Auto Zero"
+   iL enum { "Off"=0, "Once"=1024, "On"=1 }	readwrite	17	00118C67
+   "Specifies the auto-zero method to use on the device."	"pniDCPower_AutoZero.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Aperture Time Units"
+   "Measurement:Aperture Time Units"
+   iL enum { "Seconds"=1028, "Power Line Cycles"=1029 }	readwrite	17	00118C6B
+   "Specifies the units of the Aperture Time property for the channel configuration."	"pniDCPower_ApertureTimeUnits.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Aperture Time"
+   "Measurement:Aperture Time"
+   fD	readwrite	17	00118C6A
+   "Specifies the measurement aperture time for the channel configuration. Aperture time is specified in the units set by the Aperture Time Units property."	"pniDCPower_ApertureTime.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Power Line Frequency"
+   "Measurement:Power Line Frequency"
+   fD enum { "60 Hertz"=60.0, "50 Hertz"=50.0 }	readwrite	17	00118C44
+   "Specifies the power line frequency for specified channel(s). NI-DCPower uses this value to select a timebase for setting the Aperture Time property in power line cycles (PLCs)."	"pniDCPower_PowerLineFrequency.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Samples To Average"
+   "Measurement:Samples To Average"
+   iL	readwrite	17	00118C33
+   "Specifies the number of samples to average when you take a measurement."	"pniDCPower_SamplesToAverage.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure Record Length"
+   "Measurement:Measure Record Length"
+   iL	readwrite	17	00118C6F
+   "Specifies how many measurements compose a measure record. When this property is set to a value greater than 1, the Measure When property must be set to <b>Automatically after Source Complete</b> or <b>On Measure Trigger</b>."	"pniDCPower_MeasureRecordLength.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure Record Length Is Finite"
+   "Measurement:Measure Record Length Is Finite"
+   bool	readwrite	17	00118C70
+   "Specifies whether to take continuous measurements. Call the niDCPower Abort VI to stop continuous measurements. When this property is set to FALSE and the Source Mode property is set to <b>Single Point</b>, the Measure When property must be set to <b>Automatically after Source Complete</b> or <b>On Measure Trigger</b>. When this property is set to FALSE and the Source Mode property is set to <b>Sequence</b>, the Measure When property must be set to <b>On Measure Trigger</b>."	"pniDCPower_MeasureRecordLengthIsFinite.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure Record dt"
+   "Measurement:Measure Record Delta Time"
+   fD	readonly	17	00118C71
+   "Queries the amount of time, in seconds, between the start of two consecutive measurements in a measure record. Only query this property after the desired measurement settings are committed."	"pniDCPower_MeasureRecordDeltaTime.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Fetch Backlog"
+   "Measurement:Fetch Backlog"
+   iL	readonly	17	00118C68
+   "Returns the number of measurements acquired that have not been fetched yet."	"pniDCPower_FetchBacklog.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure When"
+   "Measurement:Advanced:Measure When"
+   iL enum { "Automatically after Source Complete"=1025, "On Demand"=1026, "On Measure Trigger"=1027 }	readwrite	17	00118C69
+   "Specifies when the measure unit should acquire measurements. Unless this property is configured to <b>On Measure Trigger</b>, the Measure Trigger Type property is ignored."	"pniDCPower_MeasureWhen.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Reset Average Before Measurement"
+   "Measurement:Advanced:Reset Average Before Measurement"
+   bool	readwrite	17	00118C36
+   "Specifies whether the measurement returned from any measurement call starts with a new measurement call (TRUE) or returns a measurement that has already begun or completed (FALSE)."	"pniDCPower_ResetAverageBeforeMeasurement.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "DC Noise Rejection"
+   "Measurement:Advanced:DC Noise Rejection"
+   iL enum { "Normal"=1044, "Second-Order"=1043 }	readwrite	17	00118C72
+   "Determines the relative weighting of samples in a measurement."	"pniDCPower_DCNoiseRejection.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure Buffer Size"
+   "Measurement:Advanced:Measure Buffer Size"
+   iL	readwrite	17	00118C7D
+   "Specifies the number of samples that the active channel measurement buffer can hold."	"pniDCPower_MeasureBufferSize.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Start Trigger Type"
+   "Triggers:Start Trigger:Trigger Type"
+   iL enum { "Digital Edge"=1014, "Software Edge"=1015, "None"=1012 }	readwrite	17	00118C45
+   "Specifies the behavior of the Start trigger."	"pniDCPower_StartTriggerType.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Exported Start Trigger Output Terminal"
+   "Triggers:Start Trigger:Export Output Terminal"
+   string	readwrite	17	00118C48
+   "Specifies the output terminal for exporting the Start trigger.
+
+Refer to the <b>Device Routes</b> tab in Measurement & Automation Explorer for a list of the terminals available on your device. For the PXIe-4162/4163, refer to the Signal Routing topic for the device to determine which routes are available. This information is not available on a Device Routes tab in MAX."	"pniDCPower_ExportedStartTriggerOutputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Start Trigger Digital Edge - Edge"
+   "Triggers:Start Trigger:Digital Edge:Edge"
+   iL enum { "Rising"=1016, "Falling"=1017 }	readwrite	17	00118C46
+   "Specifies whether to configure the Start trigger to assert on the rising or falling edge."	"pniDCPower_StartTriggerDigitalEdgeEdge.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Start Trigger Digital Edge - Input Terminal"
+   "Triggers:Start Trigger:Digital Edge:Input Terminal"
+   string	readwrite	17	00118C47
+   "Specifies the input terminal for the Start trigger. This property is used only when the Start Trigger Type property is set to <b>Digital Edge</b>."	"pniDCPower_StartTriggerDigitalEdgeInputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Source Trigger Type"
+   "Triggers:Source Trigger:Trigger Type"
+   iL enum { "Digital Edge"=1014, "Software Edge"=1015, "None"=1012 }	readwrite	17	00118C4E
+   "Specifies the behavior of the Source trigger."	"pniDCPower_SourceTriggerType.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Exported Source Trigger Output Terminal"
+   "Triggers:Source Trigger:Export Output Terminal"
+   string	readwrite	17	00118C51
+   "Specifies the output terminal for exporting the Source trigger.
+
+Refer to the <b>Device Routes</b> tab in Measurement & Automation Explorer for a list of the terminals available on your device. For the PXIe-4162/4163, refer to the Signal Routing topic for the device to determine which routes are available. This information is not available on a Device Routes tab in MAX."	"pniDCPower_ExportedSourceTriggerOutputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Source Trigger Digital Edge - Edge"
+   "Triggers:Source Trigger:Digital Edge:Edge"
+   iL enum { "Rising"=1016, "Falling"=1017 }	readwrite	17	00118C4F
+   "Specifies whether to configure the Source trigger to assert on the rising or falling edge."	"pniDCPower_SourceTriggerDigitalEdgeEdge.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Source Trigger Digital Edge - Input Terminal"
+   "Triggers:Source Trigger:Digital Edge:Input Terminal"
+   string	readwrite	17	00118C50
+   "Specifies the input terminal for the Source trigger. This property is used only when the Source Trigger Type property is set to <b>Digital Edge</b>."	"pniDCPower_SourceTriggerDigitalEdgeInputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure Trigger Type"
+   "Triggers:Measure Trigger:Trigger Type"
+   iL enum { "Digital Edge"=1014, "Software Edge"=1015, "None"=1012 }	readwrite	17	00118C52
+   "Specifies the behavior of the Measure trigger."	"pniDCPower_MeasureTriggerType.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Exported Measure Trigger Output Terminal"
+   "Triggers:Measure Trigger:Export Output Terminal"
+   string	readwrite	17	00118C55
+   "Specifies the output terminal for exporting the Measure trigger.
+
+Refer to the <b>Device Routes</b> tab in Measurement & Automation Explorer for a list of the terminals available on your device. For the PXIe-4162/4163, refer to the Signal Routing topic for the device to determine which routes are available. This information is not available on a Device Routes tab in MAX."	"pniDCPower_ExportedMeasureTriggerOutputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure Trigger Digital Edge - Edge"
+   "Triggers:Measure Trigger:Digital Edge:Edge"
+   iL enum { "Rising"=1016, "Falling"=1017 }	readwrite	17	00118C53
+   "Specifies whether to configure the Measure trigger to assert on the rising or falling edge."	"pniDCPower_MeasureTriggerDigitalEdgeEdge.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure Trigger Digital Edge - Input Terminal"
+   "Triggers:Measure Trigger:Digital Edge:Input Terminal"
+   string	readwrite	17	00118C54
+   "Specifies the input terminal for the Measure trigger. This property is used only when the Measure Trigger Type property is set to <b>Digital Edge</b>."	"pniDCPower_MeasureTriggerDigitalEdgeInputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sequence Advance Trigger Type"
+   "Triggers:Sequence Advance Trigger:Trigger Type"
+   iL enum { "Digital Edge"=1014, "Software Edge"=1015, "None"=1012 }	readwrite	17	00118C4A
+   "Specifies the behavior of the Sequence Advance trigger."	"pniDCPower_SequenceAdvanceTriggerType.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Exported Sequence Advance Trigger Output Terminal"
+   "Triggers:Sequence Advance Trigger:Export Output Terminal"
+   string	readwrite	17	00118C4D
+   "Specifies the output terminal for exporting the Sequence Advance trigger.
+
+Refer to the <b>Device Routes</b> tab in Measurement & Automation Explorer for a list of the terminals available on your device. For the PXIe-4162/4163, refer to the Signal Routing topic for the device to determine which routes are available. This information is not available on a Device Routes tab in MAX."	"pniDCPower_ExportedSequenceAdvanceTriggerOutputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sequence Advance Trigger Digital Edge - Edge"
+   "Triggers:Sequence Advance Trigger:Digital Edge:Edge"
+   iL enum { "Rising"=1016, "Falling"=1017 }	readwrite	17	00118C4B
+   "Specifies whether to configure the Sequence trigger to assert on the rising or falling edge."	"pniDCPower_SequenceAdvanceTriggerDigitalEdgeEdge.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sequence Advance Trigger Digital Edge - Input Terminal"
+   "Triggers:Sequence Advance Trigger:Digital Edge:Input Terminal"
+   string	readwrite	17	00118C4C
+   "Specifies the input terminal for the Sequence Advance trigger. This property is used only when the Sequence Advance Trigger Type property is set to <b>Digital Edge</b>."	"pniDCPower_SequenceAdvanceTriggerDigitalEdgeInputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Source Complete Event Output Terminal"
+   "Events:Source Complete Event:Output Terminal"
+   string	readwrite	17	00118C5B
+   "Specifies the output terminal for exporting the Source Complete event."	"pniDCPower_SourceCompleteEventOutputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Source Complete Event Pulse Polarity"
+   "Events:Source Complete Event:Pulse:Polarity"
+   iL enum { "Active High"=1018, "Active Low"=1019 }	readwrite	17	00118C59
+   "Specifies the behavior of the Source Complete event."	"pniDCPower_SourceCompleteEventPulsePolarity.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Source Complete Event Pulse Width"
+   "Events:Source Complete Event:Pulse:Width"
+   fD	readwrite	17	00118C5A
+   "Specifies the width of the Source Complete event, in seconds.
+
+The minimum event pulse width value for the NI PXI-4132 is 150 ns, and the minimum event pulse width value for PXI Express devices is 250 ns.
+
+The maximum event pulse width value for all devices is 1.6 microseconds."	"pniDCPower_SourceCompleteEventPulseWidth.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure Complete Event Output Terminal"
+   "Events:Measure Complete Event:Output Terminal"
+   string	readwrite	17	00118C5F
+   "Specifies the output terminal for exporting the Measure Complete event."	"pniDCPower_MeasureCompleteEventOutputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure Complete Event Delay"
+   "Events:Measure Complete Event:Event Delay"
+   fD	readwrite	17	00118C5E
+   "Specifies the amount of time to delay the generation of the Measure Complete event, in seconds."	"pniDCPower_MeasureCompleteEventEventDelay.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure Complete Event Pulse Polarity"
+   "Events:Measure Complete Event:Pulse:Polarity"
+   iL enum { "Active High"=1018, "Active Low"=1019 }	readwrite	17	00118C5C
+   "Specifies the behavior of the Measure Complete event."	"pniDCPower_MeasureCompleteEventPulsePolarity.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Measure Complete Event Pulse Width"
+   "Events:Measure Complete Event:Pulse:Width"
+   fD	readwrite	17	00118C5D
+   "Specifies the width of the Measure Complete event, in seconds.
+
+The minimum event pulse width value for the NI PXI-4132 is 150 ns, and the minimum event pulse width value for PXI Express devices is 250 ns.
+
+The maximum event pulse width value for all devices is 1.6 microseconds."	"pniDCPower_MeasureCompleteEventPulseWidth.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sequence Iteration Complete Event Output Terminal"
+   "Events:Sequence Iteration Complete Event:Output Terminal"
+   string	readwrite	17	00118C58
+   "Specifies the output terminal for exporting the Sequence Iteration Complete event."	"pniDCPower_SequenceIterationCompleteEventOutputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sequence Iteration Complete Event Pulse Polarity"
+   "Events:Sequence Iteration Complete Event:Pulse:Polarity"
+   iL enum { "Active High"=1018, "Active Low"=1019 }	readwrite	17	00118C56
+   "Specifies the behavior of the Sequence Iteration Complete event."	"pniDCPower_SequenceIterationCompleteEventPulsePolarity.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sequence Iteration Complete Event Pulse Width"
+   "Events:Sequence Iteration Complete Event:Pulse:Width"
+   fD	readwrite	17	00118C57
+   "Specifies the width of the Sequence Iteration Complete event, in seconds.
+
+The minimum event pulse width value for the NI PXI-4132 is 150 ns, and the minimum event pulse width value for PXI Express devices is 250 ns.
+
+The maximum event pulse width value for all devices is 1.6 microseconds."	"pniDCPower_SequenceIterationCompleteEventPulseWidth.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sequence Engine Done Event Output Terminal"
+   "Events:Sequence Engine Done Event:Output Terminal"
+   string	readwrite	17	00118C62
+   "Specifies the output terminal for exporting the Sequence Engine Done Complete event."	"pniDCPower_SequenceEngineDoneEventOuputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sequence Engine Done Event Pulse Polarity"
+   "Events:Sequence Engine Done Event:Pulse:Polarity"
+   iL enum { "Active High"=1018, "Active Low"=1019 }	readwrite	17	00118C60
+   "Specifies the behavior of the Sequence Engine Done event."	"pniDCPower_SequenceEngineDoneEventPulsePolarity.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Sequence Engine Done Event Pulse Width"
+   "Events:Sequence Engine Done Event:Pulse:Width"
+   fD	readwrite	17	00118C61
+   "Specifies the width of the Sequence Engine Done event, in seconds.
+
+The minimum event pulse width value for the NI PXI-4132 is 150 ns, and the minimum event pulse width value for PXI Express devices is 250 ns.
+
+The maximum event pulse width value for all devices is 1.6 microseconds."	"pniDCPower_SequenceEngineDoneEventPulseWidth.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Trigger Type"
+   "Triggers:Pulse Trigger:Trigger Type"
+   iL enum { "Digital Edge"=1014, "Software Edge"=1015, "None"=1012 }	readwrite	17	00118C8F
+   "Specifies the behavior of the Pulse trigger."	"pniDCPower_PulseTriggerType.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Exported Pulse Trigger Output Terminal"
+   "Triggers:Pulse Trigger:Export Output Terminal"
+   string	readwrite	17	00118C92
+   "Specifies the output terminal for exporting the Pulse trigger.
+
+Refer to the <b>Device Routes</b> tab in Measurement & Automation Explorer for a list of the terminals available on your device."	"pniDCPower_ExportedPulseTriggerOutputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Trigger Digital Edge - Edge"
+   "Triggers:Pulse Trigger:Digital Edge:Edge"
+   iL enum { "Rising"=1016, "Falling"=1017 }	readwrite	17	00118C90
+   "Specifies whether to configure the Pulse trigger to assert on the rising or falling edge."	"pniDCPower_PulseTriggerDigitalEdgeEdge.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Trigger Digital Edge - Input Terminal"
+   "Triggers:Pulse Trigger:Digital Edge:Input Terminal"
+   string	readwrite	17	00118C91
+   "Specifies the input terminal for the Pulse trigger. This property is used only when the Pulse Trigger Type property is set to <b>Digital Edge</b>."	"pniDCPower_PulseTriggerDigitalEdgeInputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Complete Event Output Terminal"
+   "Events:Pulse Complete Event:Output Terminal"
+   string	readwrite	17	00118C93
+   "Specifies the output terminal for exporting the Pulse Complete event."	"pniDCPower_PulseCompleteEventOuputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Complete Event Pulse Polarity"
+   "Events:Pulse Complete Event:Pulse:Polarity"
+   iL enum { "Active High"=1018, "Active Low"=1019 }	readwrite	17	00118C94
+   "Specifies the behavior of the Pulse Complete event."	"pniDCPower_PulseCompleteEventPulsePolarity.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Pulse Complete Event Pulse Width"
+   "Events:Pulse Complete Event:Pulse:Width"
+   fD	readwrite	17	00118C95
+   "Specifies the width of the Pulse Complete event, in seconds.
+
+The minimum event pulse width value for PXI Express devices is 250 ns.
+
+The maximum event pulse width value for all devices is 1.6 microseconds."	"pniDCPower_PulseCompleteEventPulseWidth.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Ready For Pulse Trigger Event Output Terminal"
+   "Events:Ready For Pulse Trigger Event:Output Terminal"
+   string	readwrite	17	00118C96
+   "Specifies the output terminal for exporting the Ready For Pulse Trigger event."	"pniDCPower_ReadyForPulseTriggerEventOuputTerminal.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Ready For Pulse Trigger Event Pulse Polarity"
+   "Events:Ready For Pulse Trigger Event:Pulse:Polarity"
+   iL enum { "Active High"=1018, "Active Low"=1019 }	readwrite	17	00118C97
+   "Specifies the behavior of the Ready For Pulse Trigger event."	"pniDCPower_ReadyForPulseTriggerEventPulsePolarity.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Ready For Pulse Trigger Event Pulse Width"
+   "Events:Ready For Pulse Trigger Event:Pulse:Width"
+   fD	readwrite	17	00118C98
+   "Specifies the width of the Ready For Pulse Trigger event, in seconds."	"pniDCPower_ReadyForPulseTriggerEventPulseWidth.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Power Source"
+   "Advanced:Power Source"
+   iL enum { "Internal"=1003, "Auxiliary"=1004, "Automatic"=1005 }	readwrite	17	00118C30
+   "Specifies the power source to use. NI-DCPower switches the power source used by the device to the specified value."	"pniDCPower_PowerSource.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Power Source In Use"
+   "Advanced:Power Source In Use"
+   iL enum { "Internal"=1003, "Auxiliary"=1004 }	readonly	17	00118C31
+   "Indicates whether the device is using the internal or auxiliary power source to generate power."	"pniDCPower_PowerSourceInUse.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Auxiliary Power Source Available"
+   "Advanced:Auxiliary Power Source Available"
+   bool	readonly	17	00118C32
+   "Indicates whether an auxiliary power source is connected to the device."	"pniDCPower_AuxiliaryPowerSourceAvailable.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Self-Cal Persistence"
+   "Advanced:Self-Calibration Persistence"
+   iL enum { "Keep in Memory"=1045, "Write to EEPROM"=1046 }	readwrite	17	00118C79
+   "Specifies whether the values calculated during self-calibration should be written to hardware to be used until the next self-calibration or only used until the niDCPower Reset Device VI is called or the machine is powered down."	"pniDCPower_SelfCalibrationPersistence.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Interlock Input Open"
+   "Advanced:Interlock Input Open"
+   bool	readonly	17	00118C99
+   "Indicates whether the safety interlock circuit is open."	"pniDCPower_InterlockInputOpen.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Range Check"
+   "Inherent IVI Attributes:User Options:Range Check"
+   bool	readwrite	17	00100592
+   "Specifies whether to validate property values and VI parameters."	"pniDCPower_RangeCheck.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Query Instrument Status"
+   "Inherent IVI Attributes:User Options:Query Instrument Status"
+   bool	readwrite	17	00100593
+   "Specifies whether NI-DCPower queries the device status after each operation."	"pniDCPower_QueryInstrumentStatus.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Cache"
+   "Inherent IVI Attributes:User Options:Cache"
+   bool	readwrite	17	00100594
+   "Specifies whether to cache the value of properties."	"pniDCPower_Cache.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Simulate"
+   "Inherent IVI Attributes:User Options:Simulate"
+   bool	readwrite	17	00100595
+   "Specifies whether to simulate NI-DCPower I/O operations. TRUE specifies that operation is simulated."	"pniDCPower_Simulate.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Record Value Coercions"
+   "Inherent IVI Attributes:User Options:Record Value Coercions"
+   bool	readwrite	17	00100596
+   "Specifies whether the IVI engine records the value coercions it makes for ViInt32 and ViReal64 properties."	"pniDCPower_RecordValueCoercions.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Interchange Check"
+   "Inherent IVI Attributes:User Options:Interchange Check"
+   bool	readwrite	17	001005A5
+   "Specifies whether to perform interchangeability checking and log interchangeability warnings when you call NI-DCPower VIs. TRUE specifies that interchangeability checking is enabled."	"pniDCPower_InterchangeCheck.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Description"
+   "Inherent IVI Attributes:Driver Identification:Description"
+   string	readonly	17	00100792
+   "Contains a brief description of the specific driver."	"pniDCPower_Description.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Driver Prefix"
+   "Inherent IVI Attributes:Driver Identification:Driver Prefix"
+   string	readonly	17	001006BE
+   "Contains the prefix for NI-DCPower. The name of each user-callable VI in NI-DCPower begins with this prefix."	"pniDCPower_DriverPrefix.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Driver Vendor"
+   "Inherent IVI Attributes:Driver Identification:Driver Vendor"
+   string	readonly	17	00100791
+   "Contains the name of the vendor that supplies NI-DCPower."	"pniDCPower_DriverVendor.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Revision"
+   "Inherent IVI Attributes:Driver Identification:Revision"
+   string	readonly	17	001007B7
+   "Contains additional version information about NI-DCPower."	"pniDCPower_Revision.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Class Specification Major Version"
+   "Inherent IVI Attributes:Driver Identification:Class Specification Major Version"
+   iL	readonly	17	00100793
+   "Contains the major version number of the class specification with which NI-DCPower is compliant."	"pniDCPower_ClassSpecificationMajorVersion.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Class Specification Minor Version"
+   "Inherent IVI Attributes:Driver Identification:Class Specification Minor Version"
+   iL	readonly	17	00100794
+   "Contains the minor version number of the class specification with which NI-DCPower is compliant."	"pniDCPower_ClassSpecificationMinorVersion.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Supported Instrument Models"
+   "Inherent IVI Attributes:Driver Capabilities:Supported Instrument Models"
+   string	readonly	17	001006D7
+   "Contains a comma-separated (,) list of supported NI-DCPower device models."	"pniDCPower_SupportedInstrumentModels.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Class Group Capabilities"
+   "Inherent IVI Attributes:Driver Capabilities:Class Group Capabilities"
+   string	readonly	17	00100721
+   "Contains a comma-separated (,) list of class-extension groups that NI-DCPower implements."	"pniDCPower_ClassGroupCapabilities.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Channel Count"
+   "Inherent IVI Attributes:Driver Capabilities:Channel Count"
+   iL	readonly	17	0010065B
+   "Indicates the number of channels that NI-DCPower supports for the instrument that was chosen when the current session was opened. For channel-based properties, the IVI engine maintains a separate cache value for each channel."	"pniDCPower_ChannelCount.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Manufacturer"
+   "Inherent IVI Attributes:Instrument Identification:Manufacturer"
+   string	readonly	17	0010078F
+   "Contains the name of the manufacturer for the device you are currently using."	"pniDCPower_Manufacturer.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Model"
+   "Inherent IVI Attributes:Instrument Identification:Model"
+   string	readonly	17	00100790
+   "Contains the model number or name of the device you are currently using."	"pniDCPower_Model.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Firmware Revision"
+   "Inherent IVI Attributes:Instrument Identification:Firmware Revision"
+   string	readonly	17	0010078E
+   "Contains the firmware revision information for the device you are currently using."	"pniDCPower_FirmwareRevision.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Driver Setup"
+   "Inherent IVI Attributes:Advanced Session Information:Driver Setup"
+   string	readonly	17	00100597
+   "Indicates the Driver Setup string that you specified when initializing the driver."	"pniDCPower_DriverSetup.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Logical Name"
+   "Inherent IVI Attributes:Advanced Session Information:Logical Name"
+   string	readonly	17	001006C1
+   "Contains the logical name you specified when opening the current IVI session."	"pniDCPower_LogicalName.html"	"<helpdir>:\dcpowerpropref.chm"
+
+attribute: "Resource Descriptor"
+   "Inherent IVI Attributes:Advanced Session Information:Resource Descriptor"
+   string	readonly	17	001006C0
+   "Indicates the resource descriptor NI-DCPower uses to identify the physical device."	"pniDCPower_ResourceDescriptor.html"	"<helpdir>:\dcpowerpropref.chm"

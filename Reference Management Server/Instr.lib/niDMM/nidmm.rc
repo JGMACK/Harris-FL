@@ -1,0 +1,499 @@
+explicitActiveChannels: TRUE
+library: nidmm_*.*
+      
+class: "niDMM"
+flags: 0
+sorted: no
+implements: ivi, IviDmm, iviResourceMgr
+
+attribute: "Active Channel"
+   "Active Channel"
+   string	writeonly	19	-2
+   "Specifies the channel name used to access all subsequent channel-based properties in this property node. Set the channel before setting channel-based properties. Pass a name that the instrument driver defines or a virtual channel name configured in MAX."	"pniDMM_ActiveChannel.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Function"
+   "Configuration:Function"
+   iL enum { "DC Volts"=1, "AC Volts"=2, "DC Current"=3, "AC Current"=4, "2-Wire Resistance"=5, "4-Wire Resistance"=101, "Frequency"=104, "Period"=105, "AC Volts DC Coupled"=1001, "Diode"=1002, "Waveform Voltage"=1003, "Waveform Current"=1004, "Capacitance"=1005, "Inductance"=1006, "Temperature"=108 }	readwrite	17	001312D1
+   "Specifies the measurement function. If you are setting this property directly, you must also set the Operation Mode property, which controls whether the DMM takes standard single or multipoint measurements, or acquires a waveform. If you are programming properties directly, you must set the Operation Mode property before setting other configuration properties. If the Operation Mode property is set to Waveform Mode, the only valid function types are Waveform Voltage and Waveform Current. Set the Operation Mode property to IVIDMM Mode to set all other function values."	"pniDMM_Function.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Range"
+   "Configuration:Range"
+   fD	readwrite	17	001312D2
+   "Specifies the measurement range. Use positive values to represent the absolute value of the maximum expected measurement. The value is in units appropriate for the current value of the Function property. For example, if the Function property is set to DC Volts, the units are volts."	"pniDMM_Range.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Auto Range Value"
+   "Configuration:Auto Range Value"
+   fD	readonly	17	0013141B
+   "Specifies the value of the range. If auto ranging is enabled, shows the actual value of the active range. The value of this property is set during a read operation."	"pniDMM_AutoRangeValue.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Digits Resolution"
+   "Configuration:Digits Resolution"
+   fD enum { "3.5"=3.5000000E+0, "4.5"=4.500000E+0, "5.5"=5.500000E+0, "6.5"=6.500000E+0, "7.5"=7.500000E+0 }	readwrite	17	001312D3
+   "Specifies the measurement resolution in digits. Setting this property to higher values increases the measurement accuracy. Setting this property to lower values increases the measurement speed."	"pniDMM_DigitsResolution.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Absolute Resolution"
+   "Configuration:Absolute Resolution"
+   fD	readwrite	17	001312D8
+   "Specifies the measurement resolution in absolute units. Setting this property to higher values increases the measurement accuracy. Setting this property to lower values increases the measurement speed."	"pniDMM_AbsoluteResolution.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Input Resistance"
+   "Configuration:Measurement Options:Input Resistance"
+   fD enum { "1 M Ohm"=1.000000E+6, "10 M Ohm"=1.000000E+7, "Greater Than 10 G Ohm"=1.000000E+10 }	readwrite	17	00118C4D
+   "Specifies the input resistance of the instrument."	"pniDMM_InputResistance.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Auto Zero"
+   "Configuration:Measurement Options:Auto Zero"
+   iL enum { "Auto"=-1, "Off"=0, "On"=1, "Once"=2 }	readwrite	17	0013141C
+   "Specifies the AutoZero mode. This property is not supported for the NI 4050."	"pniDMM_AutoZero.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "ADC Calibration"
+   "Configuration:Measurement Options:ADC Calibration"
+   iL enum { "Auto"=-1, "Off"=0, "On"=1 }	readwrite	17	00118C46
+   "For the NI 4080/4081/4082 and NI 4070/4071/4072, specifies the ADC calibration mode."	"pniDMM_ADCCalibration.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Powerline Frequency"
+   "Configuration:Measurement Options:Powerline Frequency"
+   fD enum { "50 Hz"=5.000000E+1, "60 Hz"=6.000000E+1 }	readwrite	17	0013141D
+   "Specifies the powerline frequency. The NI 4060 and NI 4050 use this value to select an aperture time to reject powerline noise by selecting the appropriate internal sample clock and filter. The NI 4065, NI 4070/4071/4072, and NI 4080/4081/4082 use this value to select timebases for setting the Aperture Time property in powerline cycles."	"pniDMM_PowerlineFrequency.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Offset Compensated Ohms"
+   "Configuration:Measurement Options:Offset Compensated Ohms"
+   iL enum { "Off"=0, "On"=1 }	readwrite	17	00118C47
+   "For the NI 4080/4081/4082 and NI 4070/4071/4072, enables or disables offset compensated ohms."	"pniDMM_OffsetCompensatedOhms.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Current Source"
+   "Configuration:Measurement Options:Current Source"
+   fD enum { "1 Microamp"=1.000000E-6, "10 Microamp"=1.000000E-5, "100 Microamp"=1.000000E-4, "1 Milliamp"=1.000000E-3 }	readwrite	17	00118C49
+   "Specifies the current source provided during diode measurements.
+
+The NI 4050 and NI 4060 are not supported."	"pniDMM_CurrentSource.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Shunt Value"
+   "Configuration:Measurement Options:Shunt Value"
+   fD	readwrite	17	00118C33
+   "For the NI 4050 only, specifies the shunt resistance value."	"pniDMM_ShuntValue.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "DC Noise Rejection"
+   "Configuration:Measurement Options:DC Noise Rejection"
+   iL enum { "Auto"=-1, "Normal"=0, "Second Order"=1, "High Order"=2 }	readwrite	17	00118C4A
+   "Specifies the DC noise rejection mode."	"pniDMM_DCNoiseRejection.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Min Frequency"
+   "Configuration:Measurement Options:Min Frequency"
+   fD	readwrite	17	001312D6
+   "Specifies the minimum frequency component of the input signal for AC measurements. This property affects the DMM only when you set the Function property to AC measurements. The valid range is 1 Hz-300 kHz for the NI 4080/4081/4082 and NI 4070/4071/4072, 10 Hz-100 Hz for the NI 4065, and 20 Hz-25 kHz for the NI 4050 and NI 4060."	"pniDMM_MinFrequency.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Max Frequency"
+   "Configuration:Measurement Options:Max Frequency"
+   fD	readwrite	17	001312D7
+   "Specifies the maximum frequency component of the input signal for AC measurements. This property is used only for error checking and verifies that the value of this parameter is less than the maximum frequency of the device. This property affects the DMM only when you set the Function property to AC measurements."	"pniDMM_MaxFrequency.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Frequency Voltage Range"
+   "Configuration:Measurement Options:Frequency Voltage Range"
+   fD	readwrite	17	00131335
+   "For the NI 4080/4081/4082 and NI 4070/4071/4072, specifies the maximum amplitude of the input signal for frequency measurements."	"pniDMM_FrequencyVoltageRange.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Frequency Voltage Auto Range Value"
+   "Configuration:Measurement Options:Frequency Voltage Auto Range Value"
+   fD	readonly	17	00118C5C
+   "For the NI 4080/4081/4082 and NI 4070/4071/4072, specifies the value of the frequency voltage range. If auto ranging is enabled, shows the actual value of the active frequency voltage range. If not Auto Ranging, the value is the same as that of the Frequency Voltage Range property."	"pniDMM_FrequencyVoltageAutoRangeValue.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Transducer Type"
+   "Configuration:Measurement Options:Temperature:Transducer Type"
+   iL enum { "Thermocouple"=1, "Thermistor"=2, "2-Wire RTD"=3, "4-Wire RTD"=4 }	readwrite	17	00131399
+   "Specifies the transducer type."	"pniDMM_TransducerType.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Thermocouple Type"
+   "Configuration:Measurement Options:Temperature:Thermocouple:Thermocouple Type"
+   iL enum { "B"=1, "E"=4, "J"=6, "K"=7, "N"=8, "R"=9, "S"=10, "T"=11 }	readwrite	17	001313B7
+   "Specifies the thermocouple type."	"pniDMM_ThermocoupleType.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "TC Ref Junction Type"
+   "Configuration:Measurement Options:Temperature:Thermocouple:Reference Junction Type"
+   iL enum { "Fixed"=2 }	readwrite	17	001313B8
+   "Specifies the thermocouple reference junction type."	"pniDMM_TCRefJunctionType.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "TC Fixed Ref Junction"
+   "Configuration:Measurement Options:Temperature:Thermocouple:Fixed Reference Junction"
+   fD	readwrite	17	001313B9
+   "Specifies the value of the fixed reference junction temperature for a thermocouple in degrees Celsius."	"pniDMM_TCFixedRefJunction.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "RTD Type"
+   "Configuration:Measurement Options:Temperature:Resistance Temperature Detector:RTD Type"
+   iL enum { "Custom"=0, "Pt 3750"=1, "Pt 3851"=2, "Pt 3911"=3, "Pt 3916"=4, "Pt 3920"=5, "Pt 3928"=6 }	readwrite	17	00118CA8
+   "Specifies the RTD type."	"pniDMM_RTDType.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "RTD Resistance"
+   "Configuration:Measurement Options:Temperature:Resistance Temperature Detector:RTD Resistance"
+   fD	readwrite	17	001313C2
+   "Specifies the RTD resistance at 0 degrees Celsius."	"pniDMM_RTDResistance.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "RTD A"
+   "Configuration:Measurement Options:Temperature:Resistance Temperature Detector:RTD A"
+   fD	readwrite	17	00118CA9
+   "Specifies the Callendar-Van Dusen A coefficient for RTD scaling when the <b>RTD Type property</b> is set to Custom."	"pniDMM_RTDA.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "RTD B"
+   "Configuration:Measurement Options:Temperature:Resistance Temperature Detector:RTD B"
+   fD	readwrite	17	00118CAA
+   "Specifies the Callendar-Van Dusen B coefficient for RTD scaling when the <b>RTD Type property</b> is set to Custom."	"pniDMM_RTDB.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "RTD C"
+   "Configuration:Measurement Options:Temperature:Resistance Temperature Detector:RTD C"
+   fD	readwrite	17	00118CAB
+   "Specifies the Callendar-Van Dusen C coefficient for RTD scaling when the <b>RTD Type property</b> is set to Custom."	"pniDMM_RTDC.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Thermistor Type"
+   "Configuration:Measurement Options:Temperature:Thermistor:Thermistor Type"
+   iL enum { "Custom"=0, "44004"=1, "44006"=2, "44007"=3 }	readwrite	17	00118CAC
+   "Specifies the thermistor type."	"pniDMM_ThermistorType.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Thermistor A"
+   "Configuration:Measurement Options:Temperature:Thermistor:Thermistor A"
+   fD	readwrite	17	00118CAD
+   "Specifies the Steinhart-Hart A coefficient for thermistor scaling when the <b>Thermistor Type property</b> is set to Custom."	"pniDMM_ThermistorA.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Thermistor B"
+   "Configuration:Measurement Options:Temperature:Thermistor:Thermistor B"
+   fD	readwrite	17	00118CAE
+   "Specifies the Steinhart-Hart B coefficient for thermistor scaling when the <b>Thermistor Type property</b> is set to Custom."	"pniDMM_ThermistorB.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Thermistor C"
+   "Configuration:Measurement Options:Temperature:Thermistor:Thermistor C"
+   fD	readwrite	17	00118CAF
+   "Specifies the Steinhart-Hart C coefficient for thermistor scaling when the <b>Thermistor Type property</b> is set to Custom."	"pniDMM_ThermistorC.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Number of LC Measurements To Average"
+   "Configuration:Measurement Options:Capacitance and Inductance:Number of LC Measurements To Average"
+   iL	readwrite	17	00118C67
+   "For the NI 4082 and NI 4072 only, specifies the number of LC measurements that are averaged to produce one reading."	"pniDMM_NumberofLCMeasurementsToAverage.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Cable Compensation Type"
+   "Configuration:Measurement Options:Capacitance and Inductance:Cable Compensation Type"
+   iL enum { "None"=0, "Open"=1, "Short"=2, "Open_and_Short"=3 }	readwrite	17	00118C5D
+   "For the NI 4081 and NI 4072 only, specifies the type of cable compensation that is applied to the current capacitance or inductance measurement for the current range."	"pniDMM_CableCompensationType.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Reactance"
+   "Configuration:Measurement Options:Capacitance and Inductance:Short Cable Compensation Values:Reactance"
+   fD	readwrite	17	00118C5E
+   "For the NI 4082 and NI 4072 only, represents the reactive part (reactance) of the short cable compensation. The valid range is any real number >0. The default value (-1) indicates that compensation has not taken place."	"pniDMM_Reactance.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Resistance"
+   "Configuration:Measurement Options:Capacitance and Inductance:Short Cable Compensation Values:Resistance"
+   fD	readwrite	17	00118C5F
+   "For the NI 4082 and NI 4072 only, represents the active part (resistance) of the short cable compensation. The valid range is any real number >0. The default value (-1) indicates that compensation has not taken place."	"pniDMM_Resistance.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Susceptance"
+   "Configuration:Measurement Options:Capacitance and Inductance:Open Cable Compensation Values:Susceptance"
+   fD	readwrite	17	00118C60
+   "For the NI 4082 and NI 4072 only, specifies the reactive part (susceptance) of the open cable compensation. The valid range is any real number >0. The default value (-1.0) indicates that compensation has not taken place."	"pniDMM_Susceptance.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Conductance"
+   "Configuration:Measurement Options:Capacitance and Inductance:Open Cable Compensation Values:Conductance"
+   fD	readwrite	17	00118C61
+   "For the NI 4082 and NI 4072 only, specifies the active part (conductance) of the open cable compensation. The valid range is any real number >0. The default value (-1.0) indicates that compensation has not taken place."	"pniDMM_Conductance.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "LC Calculation Model"
+   "Configuration:Measurement Options:Capacitance and Inductance:Advanced:Calculation Model"
+   iL enum { "Auto"=-1, "Series"=0, "Parallel"=1 }	readwrite	17	00118C64
+   "For the NI 4082 and NI 4072 only, specifies the type of algorithm that the measurement processing uses for capacitance and inductance measurements."	"pniDMM_LCCalculationModel.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "DC Bias"
+   "Configuration:Measurement Options:Capacitance and Inductance:Advanced:DC Bias"
+   iL enum { "DC Bias Off"=0, "DC Bias On"=1 }	readwrite	17	00118C65
+   "For the NI 4082 and NI 4072 only, controls the available DC bias for capacitance measurements."	"pniDMM_DCBias.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Aperture Time"
+   "Configuration:Advanced:Aperture Time"
+   fD	readwrite	17	00131411
+   "Specifies the measurement aperture time for the current configuration. Aperture time is specified in units set by the Aperture Time Units property. To override the default aperture, set this property to the desired aperture time after calling niDMM Config Measurement. To return to the default, set this property to Aperture Time Auto (-1)."	"pniDMM_ApertureTime.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Aperture Time Units"
+   "Configuration:Advanced:Aperture Time Units"
+   iL enum { "Seconds"=0, "Power Line Cycles"=1 }	readwrite	17	00131412
+   "Specifies the units of aperture time for the current configuration."	"pniDMM_ApertureTimeUnits.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Settle Time"
+   "Configuration:Advanced:Settle Time"
+   fD	readwrite	17	00118C4C
+   "Specifies the settling time in seconds. Use this property to override the default settling time. To return to the default, set this property to Auto (-1)."	"pniDMM_SettleTime.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Number Of Averages"
+   "Configuration:Advanced:Number Of Averages"
+   iL	readwrite	17	00118C50
+   "Specifies the number of averages to perform in a measurement. For the NI 4080/4081/4082 and NI 4070/4071/4072, applies only when the aperture time is not set to Auto and Auto Zero is ON. The Number of Averages Property will be ignored otherwise. The default is 4 for 7 1/2 digits; otherwise, the default is 1.
+
+The NI 4050 and NI 4060 are not supported."	"pniDMM_NumberOfAverages.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Operation Mode"
+   "Configuration:Advanced:Operation Mode"
+   iL enum { "IVIDMM Mode"=0, "Waveform Mode"=1 }	readwrite	17	00118C3E
+   "Specifies how the DMM acquires data.
+
+NOTE: The NI 4050 and NI 4060 are not supported.
+
+When you call niDMM Config Measurement, NI-DMM sets this property to IVIDMM Mode. When you call niDMM Configure Waveform Acquisition, NI-DMM sets this property to Waveform Mode. If you are programming properties directly, you must set this property before setting other configuration properties."	"pniDMM_OperationMode.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Sample Count"
+   "Multi Point Acquisition:Sample Count"
+   iL	readwrite	17	001313FD
+   "Specifies the number of measurements the DMM takes each time it receives a trigger in a multiple point acquisition. Setting Sample Count to 0 on the NI 4050 and NI 4060 causes the device to take continuous measurements. Otherwise, setting Sample Count to 0 causes the conditional statement 'Measurements equal to Sample Count' to always evaluate to False, and causes the DMM to continue taking measurements in the inner loop."	"pniDMM_SampleCount.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Trigger Count"
+   "Multi Point Acquisition:Trigger Count"
+   iL	readwrite	17	00131400
+   "Specifies the number of triggers the DMM receives before returning to the Idle state. This property can be set to any positive ViInt32 value for the NI 4065, NI 4070/4071/4072, and NI 4080/4081/4082.
+
+The NI 4050/4060 only support this property being set to 1.
+
+Refer to Multiple Point Acquisitions in the NI Digital Multimeters Help for more information."	"pniDMM_TriggerCount.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Sample Trigger"
+   "Multi Point Acquisition:Sample Trigger"
+   iL enum { "Immediate"=1, "Interval"=10, "External"=2, "Software Trig"=3, "TTL 0"=111, "TTL 1"=112, "TTL 2"=113, "TTL 3"=114, "TTL 4"=115, "TTL 5"=116, "TTL 6"=117, "TTL 7"=118, "PXI Star"=131, "LBR Trig 1"=1004, "AUX Trig 1"=1001 }	readwrite	17	001313FE
+   "Specifies the sample trigger source.
+
+To determine which values are supported by each device, refer to the LabVIEW Trigger Routing section in the NI Digital Multimeters Help."	"pniDMM_SampleTrigger.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Sample Trig Slope"
+   "Multi Point Acquisition:Sample Trig Slope"
+   iL enum { "Positive"=0, "Negative"=1 }	readwrite	17	00118C3A
+   "Specifies the edge of the signal from the specified sample trigger source on which the DMM is triggered."	"pniDMM_SampleTrigSlope.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Sample Interval"
+   "Multi Point Acquisition:Sample Interval"
+   fD	readwrite	17	001313FF
+   "Specifies the amount of time in seconds the DMM waits between measurement cycles. This property only applies when the Sample Trigger property is set to INTERVAL. The default value (-1) ensures that the DMM settles for a recommended time, which is the same as using an immediate trigger."	"pniDMM_SampleInterval.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Sample Delay Mode"
+   "Multi Point Acquisition:Sample Delay Mode"
+   iL	readwrite	17	00118C4F
+   "For the NI 4060 only, specifies a delay interval after a sample trigger."	"pniDMM_SampleDelayMode.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Buffer Size"
+   "Multi Point Acquisition:Advanced:Buffer Size"
+   iL	readwrite	17	00118C55
+   "Specifies the size in samples of the internal data buffer. Maximum size is 134,217,727 (0X7FFFFFF) samples. When set to Auto (-1), NI-DMM chooses the buffer size."	"pniDMM_BufferSize.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Latency"
+   "Multi Point Acquisition:Advanced:Latency"
+   iL	readwrite	17	00118C52
+   "Specifies the number of measurements transferred at a time from the instrument to an internal buffer. When set to Auto (-1), NI-DMM chooses the transfer size."	"pniDMM_Latency.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Waveform Points"
+   "Waveform Acquisition:Waveform Points"
+   iL	readwrite	17	00118C43
+   "For the NI 4080/4081/4082 and NI 4070/4071/4072, specifies the number of points to acquire in a waveform acquisition."	"pniDMM_WaveformPoints.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Waveform Rate"
+   "Waveform Acquisition:Waveform Rate"
+   fD	readwrite	17	00118C42
+   "Specifies the rate of the waveform acquisition in samples per second (S/s). The valid rate is calculated by dividing 1,800,000 by an integer divisor, and the rate falls between 10 and 1,800,000 samples per second. The waveform rate is coerced upwards to the next valid rate. The default value is 1,800,000 samples per second. Not supported by NI 4065."	"pniDMM_WaveformRate.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Waveform Coupling"
+   "Waveform Acquisition:Waveform Coupling"
+   iL enum { "AC"=0, "DC"=1 }	readwrite	17	00118C4B
+   "For the NI 4080/4081/4082 and NI 4070/4071/4072 only, specifies the coupling during a waveform acquisition."	"pniDMM_WaveformCoupling.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Trigger Source"
+   "Trigger:Trigger Source"
+   iL enum { "Immediate"=1, "External"=2, "Software Trig"=3, "TTL 0"=111, "TTL 1"=112, "TTL 2"=113, "TTL 3"=114, "TTL 4"=115, "TTL 5"=116, "TTL 6"=117, "TTL 7"=118, "PXI Star"=131, "LBR Trig 1"=1004, "AUX_Trig 1"=1001 }	readwrite	17	001312D4
+   "Specifies the trigger source. When niDMM Initiate is called, the DMM waits for the trigger specified with this property. After it receives the trigger, the DMM waits the length of time specified with the Trigger Delay property. The DMM then takes a measurement.
+
+To determine which values are supported by each device, refer to the LabVIEW Trigger Routing section in the NI Digital Multimeters Help."	"pniDMM_TriggerSource.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Trigger Slope"
+   "Trigger:Trigger Slope"
+   iL enum { "Positive"=0, "Negative"=1 }	readwrite	17	0013141E
+   "Specifies the edge of the signal from the specified trigger source on which the DMM is triggered."	"pniDMM_TriggerSlope.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Trigger Delay"
+   "Trigger:Trigger Delay"
+   fD	readwrite	17	001312D5
+   "Specifies the time (in seconds) that the DMM waits after it has received a trigger before taking a measurement. The default value is Auto Delay (-1), which means that the DMM waits an appropriate settling time before taking the measurement.
+
+The NI 4080/4081/4082 uses the value specified in this property as additional settling time. The valid range for Trigger Delay is Auto Delay (-1) or 0.0 - 150.0 seconds, and the onboard timing resolution is 10.0 ns.
+
+The NI 4065 and NI 4070/4071/4072 use the value specified in this property as additional settling time. For these devices, the valid range for Trigger Delay is Auto Delay (-1) or 0.0 - 149.0 seconds and the onboard timing resolution is 34.72 ns.
+
+On the NI 4060, if this property is set to 0, the DMM does not settle before taking the measurement. On the NI 4060, the valid range for Trigger Delay (-1) is 0.0-12.0 seconds and the onboard timing resolution is 100 ms.
+
+When using the NI 4050, this property must be set to Auto Delay (-1).
+
+Use positive values to set the trigger delay in seconds.
+
+Valid Range: Auto Delay (-1.0), 0.0-12.0 seconds (NI 4060 only), 0.0-149.0 seconds (NI 4065 and NI 4070/4071/4072)
+
+Default Value: Auto Delay"	"pniDMM_TriggerDelay.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Measurement CompletDest"
+   "Trigger:Measurement Complete Dest"
+   iL enum { "None"=-1, "External"=2, "TTL 0"=111, "TTL 1"=112, "TL 2"=113, "TTL 3"=114, "TL 4"=115, "TTL 5"=116, "TTL 6"=117, "TTL 7"=118, "LBR Trig 0"=1003 }	readwrite	17	00131401
+   "Specifies the destination of the measurement complete (MC) signal.
+
+To determine which values are supported by each device, refer to the LabVIEW Trigger Routing section in the NI Digital Multimeters Help."	"pniDMM_MeasurementCompletDest.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Measurement Destination Slope"
+   "Trigger:Measurement Destination Slope"
+   iL enum { "Positive"=0, "Negative"=1 }	readwrite	17	00118C32
+   "Specifies the polarity of the generated measurement complete signal."	"pniDMM_MeasurementDestinationSlope.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Simulate"
+   "Inherent IVI Attributes:User Options:Simulate"
+   bool	readwrite	17	00100595
+   "Specifies whether to simulate instrument driver I/O operations. If simulation is enabled, instrument driver functions perform range checking and call IVI Get and Set VIs, but they do not perform instrument I/O. For output parameters that represent instrument data, the instrument driver VIs return calculated values. The default value is FALSE (0). Use niDMM Initialize With Options to override the default setting."	"pniDMM_Simulate.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Driver Setup"
+   "Inherent IVI Attributes:User Options:Driver Setup"
+   string	readonly	17	00100597
+   "This property indicates the Driver Setup string that the user specified when initializing the driver. Some cases exist where the end-user must specify instrument driver options at initialization time. An example of this is specifying a particular instrument model from among a family of instruments that the driver supports. This is useful when using simulation. The end-user can specify driver-specific options through the Driver Setup keyword in the Option String parameter in niDMM Initialize With Options. If the user does not specify a Driver Setup string, this property returns an empty string."	"pniDMM_DriverSetup.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Range Check"
+   "Inherent IVI Attributes:User Options:Range Check"
+   bool	readwrite	17	00100592
+   "Specifies whether to validate property values and VI parameters. If enabled, the instrument driver validates the parameter values passed to driver VIs. Range checking parameters is very useful for debugging. After the user program is validated, you can set this property to FALSE (0) to disable range checking and maximize performance. The default value is TRUE (1). Use niDMM Initialize With Options to override the default setting."	"pniDMM_RangeCheck.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Query Instrument Status"
+   "Inherent IVI Attributes:User Options:Query Instrument Status"
+   bool	readwrite	17	00100593
+   "Specifies whether the instrument driver queries the instrument status after each operation. Querying the instrument status is very useful for debugging. After the user program is validated, this property can be set to FALSE (0) to disable status checking and maximize performance. The instrument driver can choose to ignore status checking for particular properties regardless of the setting of this property. The default value is TRUE (1). Use niDMM Initialize With Options to override the default setting."	"pniDMM_QueryInstrumentStatus.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Cache"
+   "Inherent IVI Attributes:User Options:Cache"
+   bool	readwrite	17	00100594
+   "Specifies whether to cache the value of properties. When caching is enabled, the instrument driver keeps track of the current instrument settings and avoids sending redundant commands to the instrument. Thus, it significantly increases execution speed. The instrument driver can choose to always cache or to never cache particular properties regardless of the setting of this property. The default value is TRUE (1). Use niDMM Initialize With Options to override the default setting."	"pniDMM_Cache.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Record Value Coercions"
+   "Inherent IVI Attributes:User Options:Record Value Coercions"
+   bool	readwrite	17	00100596
+   "Specifies whether the IVI engine keeps a list of the value coercions it makes for ViInt32 and ViReal64 properties. The default value is FALSE (0). Use niDMM Initialize With Options to override the default setting. Use niDMM Get Next Coercion Record to extract and delete the oldest coercion record from the list."	"pniDMM_RecordValueCoercions.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Interchange Check"
+   "Inherent IVI Attributes:User Options:Interchange Check"
+   bool	readwrite	17	001005A5
+   "Specifies whether to perform interchangeability checking and log interchangeability warnings when you call niDMM VIs. Interchangeability warnings indicate that using your application with a different instrument might cause different behavior. Use niDMM Get Next Interchange Warning to extract interchange warnings. Use niDMM Clear Interchange Warnings to clear the list of interchangeability warnings without reading them. Interchangeability checking examines the properties in a capability group only if you specify a value for at least one property within that group. Interchangeability warnings can occur when a property affects the behavior of the instrument and you have not set that property, or the property has been invalidated since you set it."	"pniDMM_InterchangeCheck.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Channel Count"
+   "Inherent IVI Attributes:Instrument Capabilities:Channel Count"
+   iL	readonly	17	0010065B
+   "Indicates the number of channels that the specific instrument driver supports. For each property for which the IVI_VAL_MULTI_CHANNEL flag property is set, the IVI engine maintains a separate cache value for each channel."	"pniDMM_ChannelCount.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Specific Driver Prefix"
+   "Inherent IVI Attributes:Instrument Capabilities:Specific Driver Prefix"
+   string	readonly	17	001006BE
+   "The prefix for the specific instrument driver. The name of each user-callable VI in this driver starts with this prefix. The prefix can be up to a maximum of eight characters."	"pniDMM_SpecificDriverPrefix.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Instrument Manufacturer"
+   "Inherent IVI Attributes:Instrument Identification:Instrument Manufacturer"
+   string	readonly	17	0010078F
+   "A string containing the manufacturer of the instrument."	"pniDMM_InstrumentManufacturer.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Instrument Model"
+   "Inherent IVI Attributes:Instrument Identification:Instrument Model"
+   string	readonly	17	00100790
+   "A string containing the instrument model."	"pniDMM_InstrumentModel.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Instrument Product ID"
+   "Inherent IVI Attributes:Instrument Identification:Instrument Product ID"
+   iL	readonly	17	00118C6D
+   "The PCI product ID."	"pniDMM_InstrumentProductID.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Instrument Firmware Revision"
+   "Inherent IVI Attributes:Instrument Identification:Instrument Firmware Revision"
+   string	readonly	17	0010078E
+   "A string containing the instrument firmware revision number."	"pniDMM_InstrumentFirmwareRevision.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Instrument Serial Number"
+   "Inherent IVI Attributes:Instrument Identification:Instrument Serial Number"
+   string	readonly	17	00118C66
+   "A string containing the serial number of the instrument. This property corresponds to the serial number label that is attached to most products."	"pniDMM_InstrumentSerialNumber.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Supported Instrument Models"
+   "Inherent IVI Attributes:Specific Driver Capabilities:Supported Instrument Models"
+   string	readonly	17	001006D7
+   "A string containing the instrument models supported by the specific driver."	"pniDMM_SupportedInstrumentModels.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Group Capabilities"
+   "Inherent IVI Attributes:Specific Driver Capabilities:Group Capabilities"
+   string	readonly	17	00100721
+   "A string containing the capabilities and extension groups supported by the specific driver."	"pniDMM_GroupCapabilities.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Specific Driver Vendor"
+   "Inherent IVI Attributes:Specific Driver Identification:Specific Driver Vendor"
+   string	readonly	17	00100791
+   "A string containing the vendor of the specific driver."	"pniDMM_SpecificDriverVendor.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Specific Driver Class Spec Major Version"
+   "Inherent IVI Attributes:Specific Driver Identification:Specific Driver Class Spec Major Version"
+   iL	readonly	17	00100793
+   "The major version number of the class specification for the specific driver."	"pniDMM_SpecificDriverClassSpecMajorVersion.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Specific Driver Class Spec Minor Version"
+   "Inherent IVI Attributes:Specific Driver Identification:Specific Driver Class Spec Minor Version"
+   iL	readonly	17	00100794
+   "The minor version number of the class specification for the specific driver."	"pniDMM_SpecificDriverClassSpecMinorVersion.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Specific Driver Description"
+   "Inherent IVI Attributes:Specific Driver Identification:Specific Driver Description"
+   string	readonly	17	00100792
+   "A string containing a description of the specific driver."	"pniDMM_SpecificDriverDescription.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Specific Driver Major Version"
+   "Inherent IVI Attributes:Version Info:Specific Driver Major Version"
+   iL	readonly	17	00100787
+   "Returns the major version number of this instrument driver."	"pniDMM_SpecificDriverMajorVersion.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Specific Driver Minor Version"
+   "Inherent IVI Attributes:Version Info:Specific Driver Minor Version"
+   iL	readonly	17	00100788
+   "Returns the minor version number of this instrument driver."	"pniDMM_SpecificDriverMinorVersion.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Specific Driver Revision"
+   "Inherent IVI Attributes:Version Info:Specific Driver Revision"
+   string	readonly	17	001007B7
+   "A string that contains additional version information about this instrument driver."	"pniDMM_SpecificDriverRevision.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Logical Name"
+   "Inherent IVI Attributes:Advanced Session Information:Logical Name"
+   string	readonly	17	001006C1
+   "A string containing the logical name of the instrument."	"pniDMM_LogicalName.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "I/O Resource Descriptor"
+   "Inherent IVI Attributes:Advanced Session Information:I/O Resource Descriptor"
+   string	readonly	17	001006C0
+   "A string containing the resource descriptor of the instrument."	"pniDMM_IOResourceDescriptor.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Primary Error"
+   "Obsolete:Inherent IVI Attributes:Error Info:Primary Error"
+   iL	readwrite	17	001005F5
+   "A code that describes the first error that occurred since the last call to niDMM Get Error for the session. The value follows the VXIplug&play conventions. A negative value describes an error condition. A positive value describes a warning condition. A zero indicates that no error or warning occurred. The error and warning values can be status codes defined by IVI, VISA, class drivers, or specific drivers."	"pniDMM_PrimaryError.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Secondary Error"
+   "Obsolete:Inherent IVI Attributes:Error Info:Secondary Error"
+   iL	readwrite	17	001005F6
+   "An optional code that provides additional information concerning the primary error condition. The error and warning values can be status codes defined by IVI, VISA, class drivers, or specific drivers. Zero indicates no additional information."	"pniDMM_SecondaryError.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Error Elaboration"
+   "Obsolete:Inherent IVI Attributes:Error Info:Error Elaboration"
+   string	readwrite	17	001005F7
+   "An optional string that contains additional information concerning the primary error condition."	"pniDMM_ErrorElaboration.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Engine Major Version"
+   "Obsolete:Inherent IVI Attributes:Version Info:Engine Major Version"
+   iL	readonly	17	00100785
+   "The major version number of the IVI engine."	"pniDMM_EngineMajorVersion.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Engine Minor Version"
+   "Obsolete:Inherent IVI Attributes:Version Info:Engine Minor Version"
+   iL	readonly	17	00100786
+   "The minor version number of the IVI engine."	"pniDMM_EngineMinorVersion.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "Engine Revision"
+   "Obsolete:Inherent IVI Attributes:Version Info:Engine Revision"
+   string	readonly	17	001007B9
+   "A string that contains additional version information about the IVI engine."	"pniDMM_EngineRevision.html"	"<helpdir>:\dmmpropref.chm"
+
+attribute: "IDQuery response"
+   "Obsolete:Misc:IDQuery response"
+   string	readonly	17	00118C31
+   "A string containing the type of instrument used in the current session."	"pniDMM_IDQueryresponse.html"	"<helpdir>:\dmmpropref.chm"
