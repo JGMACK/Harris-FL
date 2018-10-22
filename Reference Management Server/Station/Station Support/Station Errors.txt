@@ -19,3 +19,22 @@ Method Name: <b>Front Panel:Close</b>
 	10/11/2018 11:37:08 AM	Invoke Node in Station.lvclass:Station Class Server Utility.vi->Station.lvclass:Station Close.vi
 <APPEND>
 Method Name: <b>Front Panel:Close</b>
+	10/22/2018 4:43:07 PM	C:\Users\John Gmitter\OneDrive - National Instruments\Git Repo\Harris-FL\Reference Management Server\Station\Station Support\Station Initialize Guts.vi;Error Handling - Build Error.vi:5880002->Station.lvclass:Station Initialize Guts.vi->Station.lvclass:Station Initialize.vi
+Developers Error during VI Server call to the following "Create": "C:\Users\John Gmitter\OneDrive - National Instruments\Git Repo\Harris-FL\Reference Management Server\Instrument Drivers\DMM\PXIe-4071\PXIe-4071_Initialize.vi".
+
+
+	10/22/2018 4:43:11 PM	C:\Users\John Gmitter\OneDrive - National Instruments\Git Repo\Harris-FL\Reference Management Server\Station\Station Support\Station Initialize Guts.vi;Error Handling - Build Error.vi:5880002->Station.lvclass:Station Initialize Guts.vi->Station.lvclass:Station Initialize.vi
+Developers Error during VI Server call to the following "Create": "C:\Users\John Gmitter\OneDrive - National Instruments\Git Repo\Harris-FL\Reference Management Server\Instrument Drivers\DMM\PXIe-4071\PXIe-4071_Initialize.vi".
+
+
+	10/22/2018 4:43:11 PM	C:\Users\John Gmitter\OneDrive - National Instruments\Git Repo\Harris-FL\Reference Management Server\Station\Station Support\Station Initialize Guts.vi;Error Handling - Build Error.vi:5880002->Station.lvclass:Station Initialize Guts.vi->Station.lvclass:Station Initialize.vi
+Developers Error during VI Server call to the following "Create": "C:\Users\John Gmitter\OneDrive - National Instruments\Git Repo\Harris-FL\Reference Management Server\Instrument Drivers\DMM\PXIe-4071\PXIe-4071_Initialize.vi".
+
+
+	10/22/2018 4:43:11 PM	C:\Users\John Gmitter\OneDrive - National Instruments\Git Repo\Harris-FL\Reference Management Server\Station\Station Support\Station Initialize Guts.vi;Error Handling - Build Error.vi:5880002->Station.lvclass:Station Initialize Guts.vi->Station.lvclass:Station Initialize.vi
+Developers Error during VI Server call to the following "Create": "C:\Users\John Gmitter\OneDrive - National Instruments\Git Repo\Harris-FL\Reference Management Server\Instrument Drivers\DMM\PXIe-4071\PXIe-4071_Initialize.vi".
+
+
+	10/22/2018 4:43:20 PM	Invoke Node in Station.lvclass:Station Class Server Utility.vi->Station.lvclass:Station Close.vi
+<APPEND>
+Method Name: <b>Front Panel:Close</b>

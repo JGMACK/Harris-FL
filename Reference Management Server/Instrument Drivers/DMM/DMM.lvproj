@@ -19,7 +19,6 @@
 		<Item Name="PXIe-4071" Type="Folder" URL="../PXIe-4071">
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
-		<Item Name="Instrument Info.ctl" Type="VI" URL="../../../Station/Station Support/Instrument Info.ctl"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="Agilent 3446X Series.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 3446X Series/Agilent 3446X Series.lvlib"/>
@@ -54,6 +53,7 @@
 			<Item Name="Get Address.vi" Type="VI" URL="../../../Generic Reuse/Misc/Get Address.vi"/>
 			<Item Name="Instrument Attributes Cluster.ctl" Type="VI" URL="../../Controls/Instrument Attributes Cluster.ctl"/>
 			<Item Name="Instrument Info To Log.vi" Type="VI" URL="../../Tools/Instrument Info To Log.vi"/>
+			<Item Name="Instrument Info.ctl" Type="VI" URL="../../../Station/Station Support/Controls/Instrument Info.ctl"/>
 			<Item Name="Log File Input.ctl" Type="VI" URL="../../../Generic Reuse/Logger/Log File Input.ctl"/>
 			<Item Name="Logger Global.vi" Type="VI" URL="../../../Generic Reuse/Logger/Logger Global.vi"/>
 			<Item Name="Logger Programatic Entry.vi" Type="VI" URL="../../../Generic Reuse/Logger/Logger Programatic Entry.vi"/>
